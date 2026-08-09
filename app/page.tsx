@@ -28,7 +28,7 @@ export default function LandingPage() {
 
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-semibold uppercase tracking-wider mb-6 animate-pulse-subtle">
           <Sparkles className="h-3.5 w-3.5" />
-          <span>Production-Grade RAG Architecture</span>
+          <span>Production RAG Architecture</span>
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-4xl text-white leading-tight">
@@ -39,21 +39,21 @@ export default function LandingPage() {
         </h1>
 
         <p className="mt-6 text-lg sm:text-xl text-zinc-400 max-w-2xl leading-relaxed">
-          DocuMind combines recursive token chunking, Pinecone vector search, GPT-4o streaming,
-          and automated hallucination verification for interview-grade document intelligence.
+          DocuMind combines modern PDF extraction, Supabase vector search, Groq LPU streaming (Llama 3.3 70B @ 500 T/s),
+          and automated hallucination verification for portfolio-grade document intelligence.
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
           <Link href="/dashboard">
-            <Button size="lg" className="gap-2 text-base shadow-xl shadow-violet-500/25">
+            <Button size="lg" className="gap-2 text-base shadow-xl shadow-violet-500/25 cursor-pointer">
               Launch Document Workspace
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
 
           <Link href="/upload">
-            <Button size="lg" variant="outline" className="gap-2 text-base">
-              Upload PDF
+            <Button size="lg" variant="outline" className="gap-2 text-base cursor-pointer">
+              Upload Document
             </Button>
           </Link>
         </div>
@@ -75,21 +75,21 @@ export default function LandingPage() {
             <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
               <Database className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold text-white">Pinecone Vector Isolation</h3>
+            <h3 className="text-lg font-bold text-white">Supabase & Vector Store</h3>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Multi-tenant user namespaces with hybrid dense similarity and lexical reranking for
-              high-precision recall.
+              Consolidated PostgreSQL vector storage with hybrid dense similarity and BM25 lexical reranking for
+              high-precision recall (with optional Pinecone cloud isolation).
             </p>
           </div>
 
           <div className="glass-card rounded-2xl p-6 border border-white/10 space-y-3">
             <div className="h-10 w-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-              <Layers className="h-5 w-5" />
+              <Zap className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold text-white">Exact Source Citations</h3>
+            <h3 className="text-lg font-bold text-white">Groq LPU 500 T/s Streaming</h3>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Clickable, chunk-level attribution with page numbers and relevance scores directly
-              linked in every answer.
+              Ultra-fast token streaming powered by Llama 3.3 70B with clickable, chunk-level attribution
+              and page citations backing every statement.
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-6 text-center text-xs text-zinc-500">
-        <p>DocuMind • Built with Next.js 14, LangChain.js, Pinecone, PostgreSQL & OpenAI GPT-4o</p>
+        <p>DocuMind • Built with Next.js 14, Groq LPU, Supabase Postgres, LangChain.js & unpdf</p>
       </footer>
     </div>
   );
