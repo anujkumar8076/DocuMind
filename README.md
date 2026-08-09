@@ -1,8 +1,8 @@
 # DocuMind 🧠📄
 
-> **A Production-Ready, High-Speed RAG Document Intelligence System with Real-Time Hallucination Detection & Exact Source Attribution.**
+> **A High-Speed RAG Document Intelligence System with Real-Time Hallucination Detection & Exact Source Attribution.**
 
-DocuMind is a portfolio-grade, interview-defensible Retrieval-Augmented Generation (RAG) platform built for ultra-fast performance and zero-cost free-tier deployment using **Next.js 14 (App Router)**, **Groq LPU (Llama 3.3 70B @ 500 tok/sec)**, **Supabase PostgreSQL**, **unpdf (PDF.js Engine)**, and **LangChain.js**.
+DocuMind is a Retrieval-Augmented Generation (RAG) platform built for ultra-fast performance and zero-cost free-tier deployment. Built with **Next.js 14 (App Router)**, **Groq LPU (Llama 3.3 70B @ 500 tok/sec)**, **Supabase PostgreSQL**, **unpdf (PDF.js Engine)**, and **LangChain.js**.
 
 ---
 
@@ -19,7 +19,7 @@ DocuMind is a portfolio-grade, interview-defensible Retrieval-Augmented Generati
          │
          ▼
 [ Token-Aware Chunker (tiktoken) ]
-   (500-800 tokens / 100-150 token overlap)
+   (500–800 tokens / 100–150 token overlap)
          │
          ▼
 [ Dual-Engine Embedder ] ──► (OpenAI text-embedding-3-small + High-Precision Semantic Fallback)
@@ -60,33 +60,26 @@ DocuMind is a portfolio-grade, interview-defensible Retrieval-Augmented Generati
 
 ## ✨ Key AI Engineering Features
 
-1. **Ultra-Fast Inference via Groq LPU**:
-   - Powers deep reasoning with open-source **Llama 3.3 70B Versatile** at ~500 tokens/second.
-   - Fallback support for OpenAI GPT-4o.
+### 1. Ultra-Fast Inference via Groq LPU
+Powers deep reasoning using open-source **Llama 3.3 70B Versatile** at approximately 500 tokens/second. Includes fallback support for OpenAI GPT-4o.
 
-2. **Modern PDF Extraction (`unpdf`)**:
-   - Uses Mozilla's modern PDF.js engine (`unpdf`) built specifically for Next.js and Node.js.
-   - Extracts complete structured text across multi-column layouts, Canva PDFs, Google Docs exports, and LaTeX papers without external binary dependencies.
+### 2. Modern PDF Extraction (`unpdf`)
+Leverages Mozilla's modern PDF.js engine (`unpdf`), purpose-built for Next.js and Node.js environments. Accurately extracts complete structured text across multi-column layouts, Canva PDFs, Google Docs exports, and LaTeX papers — with zero external binary dependencies.
 
-3. **Consolidated Zero-Cost Infrastructure (No AWS S3 Needed)**:
-   - Replaces multi-cloud complexity (AWS S3, separate vector DBs, Redis) with a single **Supabase PostgreSQL** database.
-   - Runs 100% free with generous free-tier limits.
+### 3. Consolidated Zero-Cost Infrastructure (No AWS S3 Required)
+Eliminates multi-cloud complexity (AWS S3, separate vector DBs, Redis) by consolidating everything into a single **Supabase PostgreSQL** database. Runs 100% free within generous free-tier limits.
 
-4. **Zero-Credit Graceful Fallback**:
-   - Automatic deterministic semantic hash embedding fallback when OpenAI credit balances are empty ($0 balance), ensuring document ingestion and querying never fail.
+### 4. Zero-Credit Graceful Fallback
+Automatically switches to a deterministic semantic hash embedding fallback when the OpenAI credit balance reaches $0, ensuring document ingestion and querying remain fully operational at all times.
 
-5. **Multi-Document Hybrid Retrieval & Reranker**:
-   - Retrieves candidates using vector similarity.
-   - Reranks using a hybrid formula: **60% dense semantic score + 40% lexical term overlap**.
-   - Context window token budget management prevents prompt overflow.
+### 5. Multi-Document Hybrid Retrieval & Reranker
+Retrieves candidates via vector similarity, then reranks using a hybrid scoring formula: **60% dense semantic score + 40% lexical term overlap**. Context window token budget controls prevent prompt overflow.
 
-6. **Real-Time Hallucination Detection & Grounding**:
-   - Analyzes claims sentence-by-sentence against retrieved source chunks.
-   - Categorizes statements as `GROUNDED`, `INFERRED`, or `HALLUCINATED`.
-   - Displays an interactive groundedness badge with confidence scores.
+### 6. Real-Time Hallucination Detection & Grounding
+Analyzes model output sentence-by-sentence against retrieved source chunks. Classifies each claim as `GROUNDED`, `INFERRED`, or `HALLUCINATED`, and surfaces an interactive groundedness badge with per-claim confidence scores.
 
-7. **Exact Clickable Source Citations**:
-   - Inline citation badges (`[SOURCE 1]`, `[SOURCE 2]`) with page numbers, match percentages, and full chunk excerpts.
+### 7. Exact Clickable Source Citations
+Every response includes inline citation badges (`[SOURCE 1]`, `[SOURCE 2]`) with corresponding page numbers, match percentages, and full chunk excerpts for complete traceability.
 
 ---
 
@@ -108,14 +101,16 @@ DocuMind is a portfolio-grade, interview-defensible Retrieval-Augmented Generati
 ## 🚀 Quick Start (Local Setup)
 
 ### 1. Prerequisites
+
 - **Node.js 18+** (v20+ or v24 recommended)
-- A free **Supabase** account ([supabase.com](https://supabase.com))
-- A free **Groq** API key ([console.groq.com](https://console.groq.com/keys))
+- A free **Supabase** account — [supabase.com](https://supabase.com)
+- A free **Groq** API key — [console.groq.com](https://console.groq.com/keys)
 
 ---
 
-### 2. Environment Variables Setup
-Create a `.env` file in the root directory:
+### 2. Environment Variables
+
+Create a `.env` file in the project root:
 
 ```env
 # Node Environment
@@ -125,24 +120,24 @@ NODE_ENV=development
 DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres"
 DIRECT_URL="postgresql://postgres:YOUR_PASSWORD@db.YOUR_PROJECT_REF.supabase.co:5432/postgres"
 
-# 2. Groq API (Free High-Speed LLM - Llama 3.3 70B)
+# 2. Groq API (Free High-Speed LLM — Llama 3.3 70B)
 GROQ_API_KEY="gsk_your_groq_api_key"
 GROQ_MODEL="llama-3.3-70b-versatile"
 
 # 3. Embeddings (OpenAI or Local Fallback)
-OPENAI_API_KEY="sk-proj-your_key" # Optional (falls back to local high-precision embeddings if $0 balance)
+OPENAI_API_KEY="sk-proj-your_key"   # Optional — falls back to local high-precision embeddings at $0 balance
 OPENAI_EMBEDDING_MODEL="text-embedding-3-small"
 
 # 4. NextAuth Authentication
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="generate-any-random-32-char-secret-string"
 
-# 5. Optional Pinecone (Only needed if using Pinecone cloud instead of PostgreSQL)
+# 5. Optional — Pinecone (only if using Pinecone cloud instead of PostgreSQL)
 PINECONE_API_KEY=""
 PINECONE_INDEX_NAME="documind"
 ```
 
-> **Tip on Supabase Passwords**: If your database password contains special characters like `@`, URL-encode it (e.g. `@` becomes `%40`).
+> **Note on Supabase Passwords:** If your database password contains special characters such as `@`, URL-encode them before embedding in the connection string (e.g. `@` → `%40`).
 
 ---
 
@@ -161,23 +156,26 @@ node prisma/seed.js
 
 ---
 
-### 4. Run the Development Server
+### 4. Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser:
-- **Sign In**: `/login` (with demo user `alex@documind.ai` or any credentials)
-- **Document Library**: `/dashboard`
-- **Upload PDF / Text**: `/upload`
-- **Interactive RAG Chat**: `/chat`
+Open **[http://localhost:3000](http://localhost:3000)** in your browser and navigate to:
+
+| Route | Purpose |
+| :--- | :--- |
+| `/login` | Sign in with demo user `alex@documind.ai` or any credentials |
+| `/dashboard` | Document library |
+| `/upload` | Upload PDF or text files |
+| `/chat` | Interactive RAG chat interface |
 
 ---
 
 ## 🧪 Automated Test Suite
 
-Run the full end-to-end test suite to verify database connection, PDF extraction, vector retrieval, and LLM Q&A:
+Run the full end-to-end test suite to verify database connectivity, PDF extraction, vector retrieval, and LLM question answering:
 
 ```bash
 node scripts/run_all_tests.js
@@ -185,33 +183,24 @@ node scripts/run_all_tests.js
 
 ---
 
-## 🌐 Deploy to Vercel (Production)
+## 🌐 Deploying to Vercel (Production)
 
 1. Push your repository to **GitHub**.
-2. Go to **[vercel.com](https://vercel.com)** → **Add New Project** → Import your repository.
-3. Add the following **Environment Variables** in Vercel settings:
-   - `DATABASE_URL`
-   - `DIRECT_URL`
-   - `GROQ_API_KEY`
-   - `GROQ_MODEL`
-   - `NEXTAUTH_URL` (e.g. `https://your-app.vercel.app`)
-   - `NEXTAUTH_SECRET`
-4. Click **Deploy**. Your RAG platform is live!
+2. Go to **[vercel.com](https://vercel.com)** → **Add New Project** → import your repository.
+3. Add the following **Environment Variables** in your Vercel project settings:
 
----
+   | Variable | Description |
+   | :--- | :--- |
+   | `DATABASE_URL` | Supabase PostgreSQL connection string |
+   | `DIRECT_URL` | Supabase direct connection string |
+   | `GROQ_API_KEY` | Groq API key |
+   | `GROQ_MODEL` | LLM model identifier |
+   | `NEXTAUTH_URL` | Your production URL (e.g. `https://your-app.vercel.app`) |
+   | `NEXTAUTH_SECRET` | Random 32-character secret string |
 
-## 📊 Benchmark & Performance Metrics
+4. Click **Deploy**. Your RAG platform is live.
 
-| Step | Component | Latency | Cost |
-| :--- | :--- | :---: | :---: |
-| **PDF Extraction** | `unpdf` Engine | ~180ms / 15-page PDF | $0.00 |
-| **Vector Similarity** | Supabase Postgres / Pinecone | ~25ms | $0.00 |
-| **Hybrid Reranker** | Dense + Lexical BM25 Overlap | ~3ms | $0.00 |
-| **Time to First Token (TTFT)** | Groq LPU (Llama 3.3 70B) | ~140ms | $0.00 |
-| **Hallucination Verification** | Sentence Claim Scorer | ~12ms | $0.00 |
-| **Total Ingestion & Indexing** | Full Document Pipeline | < 1.5s | $0.00 |
-
----
 
 ## 📄 License
-MIT License. Built for production document intelligence and portfolio showcase.
+
+MIT License. Built for production document intelligence.
