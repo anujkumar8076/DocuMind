@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "noUnusedLocals": false,
+"noUnusedParameters": false,
     "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
