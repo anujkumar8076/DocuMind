@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { Sparkles, Github, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Sparkles, Github, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function LoginPage() {
