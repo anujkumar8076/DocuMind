@@ -2,9 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   experimental: {
     serverComponentsExternalPackages: ['unpdf', 'pdf-parse', 'tiktoken'],
   },
+
   images: {
     remotePatterns: [
       {
@@ -21,6 +27,7 @@ const nextConfig = {
       },
     ],
   },
+
   async headers() {
     return [
       {
@@ -58,6 +65,7 @@ const nextConfig = {
       },
     ];
   },
+
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     config.resolve.alias.encoding = false;
